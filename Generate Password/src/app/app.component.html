@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="password-form">
+    <div class="header">
+      <h3>Generate new password</h3>
+    </div>
+    <div class="length-container">
+      <label for="">Enter no of characters:</label>
+      <input type="number" placeholder="Enter number of characters" min="1" max="100" (change)="OnChange()" required
+        [(ngModel)]="passLen">
+
+    </div>
+    <div class="checkbox-container" *ngFor="let data of checkboxes; let i=index">
+      <label>
+        <input type="checkbox" [value]="data.value" (input)="onCheckboxChange($event, data.key)" />
+        {{data.name}}
+      </label>
+    </div>
+    <div class="button-container">
+
+      <button (click)="generatePassword()">Generate</button>
+    </div>
+
+    <p *ngIf="generatedPassword">New password:
+      {{generatedPassword}}
+    </p>
+
+
+  </div>
+</div>
